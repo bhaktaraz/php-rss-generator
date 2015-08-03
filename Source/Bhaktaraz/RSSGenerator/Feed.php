@@ -3,8 +3,8 @@
 namespace Bhaktaraz\RSSGenerator;
 
 use \DOMDocument;
-use \Bhaktaraz\RSSWriter\ChannelInterface;
-use \Bhaktaraz\RSSWriter\SimpleXMLElement;
+use \Bhaktaraz\RSSGenerator\ChannelInterface;
+use \Bhaktaraz\RSSGenerator\SimpleXMLElement;
 
 class Feed implements \Bhaktaraz\RSSGenerator\FeedInterface
 {
