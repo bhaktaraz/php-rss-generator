@@ -2,8 +2,8 @@
 
 namespace Bhaktaraz\RSSGenerator;
 
-use \Bhaktaraz\RSSWriter\FeedInterface;
-use \Bhaktaraz\RSSWriter\ItemInterface;
+use \Bhaktaraz\RSSGenerator\FeedInterface;
+use \Bhaktaraz\RSSGenerator\ItemInterface;
 
 interface ChannelInterface
 {
