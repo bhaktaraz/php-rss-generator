@@ -59,7 +59,7 @@ Add in your `composer.json` file:
 ```json
 {
 	"require": {
-		"bhaktaraz/php-rss-generator": ">=1.0"
+		"bhaktaraz/php-rss-generator": "dev-master"
 	}
 }
 ```
