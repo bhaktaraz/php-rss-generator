@@ -2,8 +2,11 @@
 
 `\Bhaktaraz\RSSGenerator` is RSS generator library for PHP 5.5 or later. This component is Licensed under MIT license.
 
-The build status of the current master branch is tracked by Travis CI: [![Build Status](https://secure.travis-ci.org/bhaktaraz/php-rss-generator.png?branch=master)](http://travis-ci.org/bhaktaraz/php-rss-generator)
+Badges : 
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/?branch=master)
+
+[![Build Status](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/build-status/master)
 
 Implementation:
 
