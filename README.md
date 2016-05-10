@@ -1,6 +1,6 @@
 # \Bhaktaraz\RSSGenerator
 
-`\Bhaktaraz\RSSGenerator` is RSS generator library for PHP 5.5 or later. This component is Licensed under MIT license.
+`\Bhaktaraz\RSSGenerator` is RSS generator library for PHP 5.5 or later.
 
 Badges : 
 
@@ -73,6 +73,3 @@ Run composer to install.
 $ composer update
 ```
 
-## License
-
-MIT license
