@@ -26,7 +26,7 @@ interface ItemInterface
      * Set author name for article
      *
      * @param $creator
-     * @return string
+     * @return $this
      */
     public function creator($creator);
 
@@ -39,7 +39,7 @@ interface ItemInterface
 
     /**
      * @param $content
-     * @return string
+     * @return $this
      */
     public function content($content);
 
