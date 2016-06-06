@@ -31,6 +31,12 @@ class Channel implements ChannelInterface
     /** @var int */
     protected $lastBuildDate;
 
+    /** @var  string */
+    protected $updatePeriod;
+
+    /** @var integer */
+    protected $updateFrequency;
+
     /** @var int */
     protected $ttl;
 
@@ -128,6 +134,28 @@ class Channel implements ChannelInterface
     }
 
     /**
+     * @param $updatePeriod
+     * @return $this
+     */
+    public function updatePeriod($updatePeriod)
+    {
+        $this->updatePeriod = $updatePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @param $updateFrequency
+     * @return $this
+     */
+    public function updateFrequency($updateFrequency)
+    {
+        $this->updateFrequency = $updateFrequency;
+
+        return $this;
+    }
+
+    /**
      * Set channel ttl (minutes)
      * @param int $ttl
      * @return $this
@@ -177,6 +205,14 @@ class Channel implements ChannelInterface
 
         if ($this->language !== null) {
             $xml->addChild('language', $this->language);
+        }
+
+        if ($this->updatePeriod) {
+            $xml->addChild("xmlns:sy:updatePeriod", $this->updatePeriod);
+        }
+
+        if ($this->updateFrequency) {
+            $xml->addChild("xmlns:sy:updateFrequency", $this->updateFrequency);
         }
 
         if ($this->copyright !== null) {

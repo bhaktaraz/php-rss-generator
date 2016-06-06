@@ -78,6 +78,18 @@ interface ChannelInterface
     public function addItem(ItemInterface $item);
 
     /**
+     * @param $updatePeriod
+     * @return $this
+     */
+    public function updatePeriod($updatePeriod);
+
+    /**
+     * @param $updateFrequency
+     * @return $this
+     */
+    public function updateFrequency($updateFrequency);
+
+    /**
      * Append to feed
      * @param FeedInterface $feed
      * @return $this

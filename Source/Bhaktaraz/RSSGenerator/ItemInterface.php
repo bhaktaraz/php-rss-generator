@@ -23,11 +23,25 @@ interface ItemInterface
     public function url($url);
 
     /**
+     * Set author name for article
+     *
+     * @param $creator
+     * @return string
+     */
+    public function creator($creator);
+
+    /**
      * Set item description
      * @param string $description
      * @return $this
      */
     public function description($description);
+
+    /**
+     * @param $content
+     * @return string
+     */
+    public function content($content);
 
     /**
      * Set item category
@@ -54,23 +68,23 @@ interface ItemInterface
 
     /**
      * Set enclosure
-     * @param var $url Url to media file
+     * @param string $url Url to media file
      * @param int $length Length in bytes of the media file
-     * @param var $type Media type, default is audio/mpeg
+     * @param string $type Media type, default is audio/mpeg
      * @return $this
      */
     public function enclosure($url, $length = 0, $type = 'audio/mpeg');
 
     /**
      * Append item to the channel
-     * @param \Bhaktaraz\RSSGenerator\ChannelInterface $channel
+     * @param ChannelInterface $channel
      * @return $this
      */
     public function appendTo(ChannelInterface $channel);
 
     /**
      * Return XML object
-     * @return \Bhaktaraz\RSSGenerator\SimpleXMLElement
+     * @return SimpleXMLElement
      */
     public function asXML();
 }

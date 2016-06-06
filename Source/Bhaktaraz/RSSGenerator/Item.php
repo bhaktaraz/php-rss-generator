@@ -18,6 +18,12 @@ class Item implements ItemInterface
     /** @var string */
     protected $description;
 
+    /** @var  string */
+    protected $content;
+
+    /** @var  string */
+    protected $creator;
+
     /** @var array */
     protected $categories = [];
 
@@ -135,6 +141,30 @@ class Item implements ItemInterface
     }
 
     /**
+     * Set author name for article
+     *
+     * @param $creator
+     * @return $this
+     */
+    public function creator($creator)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * @param $content
+     * @return $this
+     */
+    public function content($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
      * Return XML object
      * @return SimpleXMLElement
      */
@@ -144,7 +174,20 @@ class Item implements ItemInterface
             LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
         $xml->addChild('title', $this->title);
         $xml->addChild('link', $this->url);
-        $xml->addChild('description', $this->description);
+        if ($this->pubDate !== null) {
+            $xml->addChild('pubDate', date(DATE_RSS, $this->pubDate));
+        }
+
+        if ($this->creator) {
+            $xml->addChildCData("xmlns:dc:creator", $this->creator);
+        }
+        if ($this->guid) {
+            $guid = $xml->addChild('guid', $this->guid);
+
+            if ($this->isPermalink) {
+                $guid->addAttribute('isPermaLink', 'true');
+            }
+        }
 
         foreach ($this->categories as $category) {
             $element = $xml->addChild('category', $category[0]);
@@ -154,18 +197,8 @@ class Item implements ItemInterface
             }
         }
 
-        if ($this->guid) {
-            $guid = $xml->addChild('guid', $this->guid);
-
-            if ($this->isPermalink) {
-                $guid->addAttribute('isPermaLink', 'true');
-            }
-        }
-
-        if ($this->pubDate !== null) {
-            $xml->addChild('pubDate', date(DATE_RSS, $this->pubDate));
-        }
-
+        $xml->addChild('description', $this->description);
+        $xml->addChildCData('xmlns:content:encoded', $this->content);
 
         if (is_array($this->enclosure) && (count($this->enclosure) == 3)) {
             $element = $xml->addChild('enclosure');
