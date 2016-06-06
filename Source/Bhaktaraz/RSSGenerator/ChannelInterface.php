@@ -2,90 +2,103 @@
 
 namespace Bhaktaraz\RSSGenerator;
 
-use \Bhaktaraz\RSSGenerator\FeedInterface;
-use \Bhaktaraz\RSSGenerator\ItemInterface;
+use Bhaktaraz\RSSGenerator\FeedInterface;
+use Bhaktaraz\RSSGenerator\SimpleXMLElement;
 
 interface ChannelInterface
 {
-	/**
-	 * Set channel title
-	 * @param string $title
-	 * @return $this
-	 */
-	public function title($title);
 
-	/**
-	 * Set channel URL
-	 * @param string $url
-	 * @return $this
-	 */
-	public function url($url);
+    /**
+     * Set channel title
+     * @param string $title
+     * @return $this
+     */
+    public function title($title);
 
-	/**
-	 * Set channel description
-	 * @param string $description
-	 * @return $this
-	 */
-	public function description($description);
+    /**
+     * Set channel URL
+     * @param string $url
+     * @return $this
+     */
+    public function url($url);
 
-	/**
-	 * Set ISO639 language code
-	 *
-	 * The language the channel is written in. This allows aggregators to group all
-	 * Italian language sites, for example, on a single page. A list of allowable
-	 * values for this element, as provided by Netscape, is here. You may also use
-	 * values defined by the W3C.
-	 *
-	 * @param string $language
-	 * @return $this
-	 */
-	public function language($language);
+    /**
+     * Set channel description
+     * @param string $description
+     * @return $this
+     */
+    public function description($description);
 
-	/**
-	 * Set channel copyright
-	 * @param string $copyright
-	 * @return $this
-	 */
-	public function copyright($copyright);
+    /**
+     * Set ISO639 language code
+     *
+     * The language the channel is written in. This allows aggregators to group all
+     * Italian language sites, for example, on a single page. A list of allowable
+     * values for this element, as provided by Netscape, is here. You may also use
+     * values defined by the W3C.
+     *
+     * @param string $language
+     * @return $this
+     */
+    public function language($language);
 
-	/**
-	 * Set channel published date
-	 * @param int $pubDate Unix timestamp
-	 * @return $this
-	 */
-	public function pubDate($pubDate);
+    /**
+     * Set channel copyright
+     * @param string $copyright
+     * @return $this
+     */
+    public function copyright($copyright);
 
-	/**
-	 * Set channel last build date
-	 * @param int $lastBuildDate Unix timestamp
-	 * @return $this
-	 */
-	public function lastBuildDate($lastBuildDate);
+    /**
+     * Set channel published date
+     * @param int $pubDate Unix timestamp
+     * @return $this
+     */
+    public function pubDate($pubDate);
 
-	/**
-	 * Set channel ttl (minutes)
-	 * @param int $ttl
-	 * @return $this
-	 */
-	public function ttl($ttl);
+    /**
+     * Set channel last build date
+     * @param int $lastBuildDate Unix timestamp
+     * @return $this
+     */
+    public function lastBuildDate($lastBuildDate);
 
-	/**
-	 * Add item object
-	 * @param \Bhaktaraz\RSSGenerator\ItemInterface $item
-	 * @return $this
-	 */
-	public function addItem(ItemInterface $item);
+    /**
+     * Set channel ttl (minutes)
+     * @param int $ttl
+     * @return $this
+     */
+    public function ttl($ttl);
 
-	/**
-	 * Append to feed
-	 * @param \Bhaktaraz\RSSGenerator\FeedInterface $feed
-	 * @return $this
-	 */
-	public function appendTo(FeedInterface $feed);
+    /**
+     * Add item object
+     * @param ItemInterface $item
+     * @return $this
+     */
+    public function addItem(ItemInterface $item);
 
-	/**
-	 * Return XML object
-	 * @return \Bhaktaraz\RSSGenerator\SimpleXMLElement
-	 */
-	public function asXML();
+    /**
+     * @param $updatePeriod
+     * @return $this
+     */
+    public function updatePeriod($updatePeriod);
+
+    /**
+     * @param $updateFrequency
+     * @return $this
+     */
+    public function updateFrequency($updateFrequency);
+
+    /**
+     * Append to feed
+     * @param FeedInterface $feed
+     * @return $this
+     */
+    public function appendTo(FeedInterface $feed);
+
+    /**
+     * Return XML object
+     * @return SimpleXMLElement
+     */
+    public function asXML();
 }
