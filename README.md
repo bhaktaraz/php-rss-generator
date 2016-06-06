@@ -2,11 +2,7 @@
 
 `\Bhaktaraz\RSSGenerator` is RSS generator library for PHP 5.5 or later.
 
-Badges : 
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/?branch=master)
-
-[![Build Status](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bhaktaraz/php-rss-generator/build-status/master)
 
 Implementation:
 
