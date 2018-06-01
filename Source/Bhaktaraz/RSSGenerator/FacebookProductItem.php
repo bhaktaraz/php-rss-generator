@@ -277,7 +277,7 @@ class FacebookProductItem implements ItemInterface
     {
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><item></item>', LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
 
-        $xml->addChild('g:id', $this->title, 'http://base.google.com/ns/1.0');
+        $xml->addChild('g:id', $this->id, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:title', $this->title, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:link', $this->url, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:description', $this->description, 'http://base.google.com/ns/1.0');
