@@ -66,6 +66,15 @@ class FacebookProductItem implements ItemInterface
     protected $enclosure;
 
     /** @var string */
+    protected $size;
+
+    /** @var string */
+    protected $material;
+
+    /** @var string */
+    protected $additionalImageLink;
+
+    /** @var string */
     protected $color;
 
     /** @var string */
@@ -325,6 +334,39 @@ class FacebookProductItem implements ItemInterface
     }
 
     /**
+     * @param $size - Size of item. For example, a shirt may be Small or XL.
+     * @return $this
+     */
+    public function size($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * @param $material - Material product is made of such as leather, denim, or cotton.
+     * @return $this
+     */
+    public function material($material)
+    {
+        $this->material = $material;
+
+        return $this;
+    }
+
+    /**
+     * @param $additionalImageLink - You can include up to 10 additional images; provide them as comma-separated URLs.
+     * @return $this
+     */
+    public function additionalImageLink($additionalImageLink)
+    {
+        $this->additionalImageLink = $additionalImageLink;
+
+        return $this;
+    }
+
+    /**
      * @param $color - Item color.
      * @return $this
      */
@@ -440,6 +482,18 @@ class FacebookProductItem implements ItemInterface
 
         if(!empty($this->mpn)) {
             $xml->addChild('g:mpn', $this->mpn, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->size)) {
+            $xml->addChild('g:size', $this->size, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->material)) {
+            $xml->addChild('g:material', $this->material, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->additionalImageLink)) {
+            $xml->addChild('g:additional_image_link', $this->additionalImageLink, 'http://base.google.com/ns/1.0');
         }
 
         if(!empty($this->color)) {
