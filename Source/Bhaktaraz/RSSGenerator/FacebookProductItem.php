@@ -38,6 +38,12 @@ class FacebookProductItem implements ItemInterface
     /** @var string */
     protected $brand;
 
+    /** @var string */
+    protected $gtin;
+
+    /** @var string */
+    protected $mpn;
+
     /** @var  string */
     protected $content;
 
@@ -58,6 +64,30 @@ class FacebookProductItem implements ItemInterface
 
     /** @var array */
     protected $enclosure;
+
+    /** @var string */
+    protected $color;
+
+    /** @var string */
+    protected $gender;
+
+    /** @var string */
+    protected $ageGroup;
+
+    /** @var string */
+    protected $customLabel0;
+
+    /** @var string */
+    protected $customLabel1;
+
+    /** @var string */
+    protected $customLabel2;
+
+    /** @var string */
+    protected $customLabel3;
+
+    /** @var string */
+    protected $customLabel4;
 
     /**
      * Set item id
@@ -108,7 +138,7 @@ class FacebookProductItem implements ItemInterface
     }
 
     /**
-     * Set item brand
+     * Set item brand - Name of the brand.
      * @param string $brand
      * @return $this
      */
@@ -118,6 +148,31 @@ class FacebookProductItem implements ItemInterface
 
         return $this;
     }
+
+    /**
+     * Set item gtin - Global Trade Item Number (GTINs) can include UPC, EAN, JAN, and ISBN.
+     * @param string $gtin
+     * @return $this
+     */
+    public function gtin($gtin)
+    {
+        $this->gtin = $gtin;
+
+        return $this;
+    }
+
+    /**
+     * Set item mpn -Unique manufacturer ID for product.
+     * @param string $mpn
+     * @return $this
+     */
+    public function mpn($mpn)
+    {
+        $this->mpn = $mpn;
+
+        return $this;
+    }
+
 
     /**
      * Set item availability
@@ -270,6 +325,94 @@ class FacebookProductItem implements ItemInterface
     }
 
     /**
+     * @param $color - Item color.
+     * @return $this
+     */
+    public function color($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @param $gender - Options include: male, female, and unisex
+     * @return $this
+     */
+    public function gender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @param $ageGroup - Age group for product. Accepted values are newborn, infant, toddler, kids, and adult.
+     * @return $this
+     */
+    public function ageGroup($ageGroup)
+    {
+        $this->ageGroup = $ageGroup;
+
+        return $this;
+    }
+
+    /**
+     * @param $customLabel0 - Optional, additional information about item.
+     * @return $this
+     */
+    public function customLabel0($customLabel0)
+    {
+        $this->customLabel0 = $customLabel0;
+
+        return $this;
+    }
+
+    /**
+     * @param $customLabel1 - Optional, additional information about item.
+     * @return $this
+     */
+    public function customLabel1($customLabel1)
+    {
+        $this->customLabel1 = $customLabel1;
+
+        return $this;
+    }
+
+    /**
+     * @param $customLabel2 - Optional, additional information about item.
+     * @return $this
+     */
+    public function customLabel2($customLabel2)
+    {
+        $this->customLabel2 = $customLabel2;
+
+        return $this;
+    }
+
+    /**
+     * @param $customLabel3 - Optional, additional information about item.
+     * @return $this
+     */
+    public function customLabel3($customLabel3)
+    {
+        $this->customLabel3 = $customLabel3;
+
+        return $this;
+    }
+
+    /**
+     * @param $customLabel4 - Optional, additional information about item.
+     * @return $this
+     */
+    public function customLabel4($customLabel4)
+    {
+        $this->customLabel4 = $customLabel4;
+
+        return $this;
+    }
+
+    /**
      * Return XML object
      * @return SimpleXMLElement
      */
@@ -277,7 +420,7 @@ class FacebookProductItem implements ItemInterface
     {
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><item></item>', LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
 
-        $xml->addChild('g:id', $this->title, 'http://base.google.com/ns/1.0');
+        $xml->addChild('g:id', $this->id, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:title', $this->title, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:link', $this->url, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:description', $this->description, 'http://base.google.com/ns/1.0');
@@ -286,7 +429,50 @@ class FacebookProductItem implements ItemInterface
         $xml->addChild('g:condition', $this->condition, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:google_product_category', $this->googleProductCategory, 'http://base.google.com/ns/1.0');
         $xml->addChild('g:image_link', $this->imageLink, 'http://base.google.com/ns/1.0');
-        $xml->addChild('g:brand', $this->brand, 'http://base.google.com/ns/1.0');
+
+        if(!empty($this->brand)) {
+            $xml->addChild('g:brand', $this->brand, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->gtin)) {
+            $xml->addChild('g:gtin', $this->gtin, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->mpn)) {
+            $xml->addChild('g:mpn', $this->mpn, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->color)) {
+            $xml->addChild('g:color', $this->color, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->gender)) {
+            $xml->addChild('g:gender', $this->gender, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->ageGroup)) {
+            $xml->addChild('g:age_group', $this->ageGroup, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->customLabel0)) {
+            $xml->addChild('g:custom_label_0', $this->customLabel0, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->customLabel1)) {
+            $xml->addChild('g:custom_label_1', $this->customLabel1, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->customLabel2)) {
+            $xml->addChild('g:custom_label_2', $this->customLabel2, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->customLabel3)) {
+            $xml->addChild('g:custom_label_3', $this->customLabel3, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->customLabel4)) {
+            $xml->addChild('g:custom_label_4', $this->customLabel4, 'http://base.google.com/ns/1.0');
+        }
 
         return $xml;
     }
