@@ -6,7 +6,8 @@
         "rss",
         "generator",
         "writer",
-        "feed"
+        "feed",
+        "Facebook product feed generator"
     ],
     "homepage": "https://github.com/bhaktaraz/php-rss-generator",
     "license": "MIT",
@@ -14,10 +15,6 @@
         {
             "name": "Bhaktaraz Bhatta",
             "email": "bhattabhakta@gmail.com"
-        },
-        {
-            "name": "Deepak Pandey",
-            "email": "er.pandeydip@gmail.com"
         }
     ],
     "require": {
