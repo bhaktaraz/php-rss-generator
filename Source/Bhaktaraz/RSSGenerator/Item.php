@@ -198,7 +198,9 @@ class Item implements ItemInterface
         }
 
         $xml->addChild('description', $this->description);
-        $xml->addChildCData('xmlns:content:encoded', $this->content);
+        if(strlen(trim($this->content)) > 0) {
+            $xml->addChildCData('xmlns:content:encoded', $this->content);
+        }
 
         if (is_array($this->enclosure) && (count($this->enclosure) == 3)) {
             $element = $xml->addChild('enclosure');
