@@ -23,6 +23,13 @@ interface ChannelInterface
     public function url($url);
 
     /**
+     * Set atom:link with rel="self"
+     * @param string $atomLinkSelf
+     * @return $this
+     */
+    public function atomLinkSelf($atomLinkSelf);
+
+    /**
      * Set channel description
      * @param string $description
      * @return $this
