@@ -21,6 +21,9 @@ class Channel implements ChannelInterface
 
     /** @var string */
     protected $description;
+		
+    /** @var object */
+    protected $image;
 
     /** @var string */
     protected $language;
@@ -91,6 +94,33 @@ class Channel implements ChannelInterface
     {
         $this->description = $description;
 
+        return $this;
+    }
+		
+    /**
+     * Set channel image
+     * 
+     * The url is the image URL.
+     * The title is used as the alt attribute if the image is used in HTML.
+     * The link should be the URL of the site.
+     * 
+     * @param string $url
+     * @param string $title
+     * @param string $link
+     * @param integer $width optional
+     * @param integer $height optional
+     * @param string $description optional
+     * @return $this
+     */
+    public function image($url, $title, $link, $width = null, $height = null, $description = null)
+    {
+        $this->image = (object) [];
+        $this->image->url = $url;
+        $this->image->title = $title;
+        $this->image->link = $link;
+        $this->image->width = $width;
+        $this->image->height = $height;
+        $this->image->description = $description;
         return $this;
     }
 
@@ -224,6 +254,16 @@ class Channel implements ChannelInterface
 
         if ($this->language !== null) {
             $xml->addChild('language', $this->language);
+        }
+				
+        if ($this->image !== null) {
+            $image = $xml->addChild('image');
+            $image->addChild('url', $this->image->url);
+            $image->addChild('title', $this->image->title);
+            $image->addChild('link', $this->image->link);
+            if (!empty($this->image->width)) $image->addChild('width', $this->image->width);
+            if (!empty($this->image->height)) $image->addChild('height', $this->image->height);
+            if (!empty($this->image->description)) $image->addChild('description', $this->image->description);
         }
 
         if ($this->updatePeriod) {
