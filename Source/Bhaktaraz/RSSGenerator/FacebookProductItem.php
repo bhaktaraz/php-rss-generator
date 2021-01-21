@@ -83,6 +83,9 @@ class FacebookProductItem implements ItemInterface
     /** @var string */
     protected $ageGroup;
 
+    /** @var integer */
+    protected $itemGroupId;
+
     /** @var string */
     protected $customLabel0;
 
@@ -400,6 +403,17 @@ class FacebookProductItem implements ItemInterface
     }
 
     /**
+     * @param $itemGroupId - Optional, additional information about item.
+     * @return $this
+     */
+    public function itemGroupId($itemGroupId)
+    {
+        $this->itemGroupId = $itemGroupId;
+
+        return $this;
+    }
+
+    /**
      * @param $customLabel0 - Optional, additional information about item.
      * @return $this
      */
@@ -506,6 +520,10 @@ class FacebookProductItem implements ItemInterface
 
         if(!empty($this->ageGroup)) {
             $xml->addChild('g:age_group', $this->ageGroup, 'http://base.google.com/ns/1.0');
+        }
+
+        if(!empty($this->itemGroupId)) {
+            $xml->addChild('g:item_group_id', $this->itemGroupId, 'http://base.google.com/ns/1.0');
         }
 
         if(!empty($this->customLabel0)) {
